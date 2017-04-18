@@ -1,0 +1,10 @@
+:root {
+  --Length-1U: 12px;
+  --Length-2U: 24px;
+  --Length-3U: 36px;
+  --Length-4U: 48px;
+
+  --Color-black: #000;
+  --Color-white: #fff;
+  --Color-Blue--dark: #2A2B39;
+}

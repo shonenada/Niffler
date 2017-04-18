@@ -1,13 +1,17 @@
 import * as React from 'react';
-import './App.css';
+import Header from './Components/Header';
+import Main from './Components/Main';
+import Footer from './Components/Footer';
 
-class App extends React.Component<any, any> {
+interface AppProps {}
+
+class App extends React.Component<AppProps, {}> {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to Niffler</h2>
-        </div>
+      <div>
+        <Header />
+        <Main />
+        <Footer />
       </div>
     );
   }

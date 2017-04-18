@@ -1,0 +1,11 @@
+@import '../../variables.css';
+
+.Header {
+  background-color: var(--Color-Blue--dark);
+  color: var(--Color-white);
+  height: var(--Length-4U);
+  width: 100%;
+  line-height: var(--Length-4U);
+  text-align: center;
+  font-weight: bold;
+}
