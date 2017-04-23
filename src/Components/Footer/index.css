@@ -1,3 +1,9 @@
+@import "../../variables.css";
+
 .Footer {
+  border-top: var(--Length-smallest) solid var(--Color-secondary);
+  color: var(--Color-secondary);
+  font-size: var(--Size-small);
+  padding: var(--Length-small);
   text-align: center;
 }
