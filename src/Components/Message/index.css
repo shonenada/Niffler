@@ -1,0 +1,18 @@
+@import "../../variables.css";
+
+.Message {
+  margin: var(--Length-1U);
+}
+
+.Message-user {}
+
+.Message-username {
+  font-weight: bold;
+  font-size: var(--Size-normal);
+}
+
+.Message-datetime {
+  color: var(--Color-secondary);
+  font-size: var(--Size-small);
+  padding: var(--Length-halfU);
+}

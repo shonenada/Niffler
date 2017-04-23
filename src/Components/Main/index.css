@@ -1,0 +1,6 @@
+@import '../../variables.css';
+
+.Main {
+  margin: 0 auto;
+  width: var(--Width);
+}
