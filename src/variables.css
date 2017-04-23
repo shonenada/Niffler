@@ -1,10 +1,21 @@
 :root {
+  --Size-small: 12px;
+  --Size-normal: 16px;
+  --Size-large: 20px;
+
+  --Width: 960px;
+
+  --Length-smallest: 1px;
+  --Length-small: 4px;
+  --Length-halfU: 6px;
   --Length-1U: 12px;
   --Length-2U: 24px;
   --Length-3U: 36px;
   --Length-4U: 48px;
 
   --Color-black: #000;
+  --Color-primary: #000;
+  --Color-secondary: #afafaf;
   --Color-white: #fff;
   --Color-Blue--dark: #2A2B39;
 }
