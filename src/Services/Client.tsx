@@ -1,5 +1,4 @@
-
-const BASE = 'https://api.bearychat.com/v1';
+import config from '../Config';
 
 interface RTMResponse {
   code?: number;
@@ -10,15 +9,24 @@ interface RTMResponse {
 
 class Client {
 
-  token: string;
+  pingId: number;
   ws_host: string;
   client: WebSocket;
   [listeners: string]: any;
 
-  public constructor(token: string) {
-    this.token = token;
+  public constructor() {
+    this.pingId = 0;
     this.ws_host = null;
     this.listeners = {};
+  }
+
+  private ping() {
+    const payload = {
+      type: 'ping',
+      call_id: this.pingId,
+    }
+    this.pingId = this.pingId + 1;
+    this.client.send(JSON.stringify(payload));
   }
 
   private onOpen() {
@@ -38,9 +46,8 @@ class Client {
 
   public onMessage(e: MessageEvent): void {
     const payload = JSON.parse(e.data);
-    const { type, data } = payload;
-    const listeners = this.getListeners(type);
-    listeners.map((cb: (e: any) => void) => { cb(data); })
+    const listeners = this.getListeners(payload.type);
+    listeners.map((cb: (e: any) => void) => { cb(payload); })
   }
 
   public addListener(type: string, cb: ((arg: any) => any)) {
@@ -51,7 +58,7 @@ class Client {
   }
 
   public getUrl(): Promise<RTMResponse> {
-    return fetch(`${BASE}/rtm.start`, {
+    return fetch(`${config.proxyHTTPUrl}/rtm.start`, {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -78,6 +85,7 @@ class Client {
     this.client = new WebSocket(url);
     this.client.onopen = (): void => { this.onOpen(); };
     this.client.onmessage = (e): void => { this.onMessage(e); };
+    setInterval((): void => { this.ping() }, 10000);
   }
 }
 
